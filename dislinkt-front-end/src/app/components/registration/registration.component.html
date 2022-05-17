@@ -1,1 +1,45 @@
-<br><p>registration works!</p>
+<div class="container">
+    <h3 style="text-align: center">REGISTRATION</h3>
+    <br>
+    <mat-label>Username:</mat-label>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <input matInput required>
+        </mat-form-field>
+      </div>
+    <br>
+    <mat-label>E-Mail:</mat-label>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+    <br>
+    <mat-label>Password:</mat-label>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <input matInput [type]="hide1 ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+    </div>
+    <br>
+    <mat-label>Confirm Password:</mat-label>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <input matInput [type]="hide2 ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+    </div> 
+    <br>
+    <div>
+        <button mat-raised-button color="primary" (click) = "signUp()">Sign Up</button>   
+    </div>
+</div>
+
+
+    
