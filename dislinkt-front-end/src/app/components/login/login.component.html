@@ -6,14 +6,14 @@
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Username</mat-label>
-          <input matInput formControlName="username" name="username" required>
+          <input matInput formControlName="username" name="username" [(ngModel)]="username" required>
           <mat-error *ngIf="loginForm.value.username">Invalid username.</mat-error>
         </mat-form-field>
       </div>
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Password</mat-label>
-           <input matInput formControlName="password" name="password" type="password" required>
+           <input matInput formControlName="password" name="password" type="password" [(ngModel)]="password" required>
            <mat-error *ngIf="loginForm.value.password">Invalid password.</mat-error>
     
         </mat-form-field>

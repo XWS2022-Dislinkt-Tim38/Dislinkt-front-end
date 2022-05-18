@@ -16,6 +16,8 @@ import { HomeComponent } from './components/home/home.component'
 import { MatFormFieldModule, MatFormFieldAppearance} from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

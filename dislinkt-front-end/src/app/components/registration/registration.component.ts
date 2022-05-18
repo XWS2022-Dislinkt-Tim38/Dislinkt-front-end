@@ -1,5 +1,16 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegistrationService } from 'src/app/components/registration/registration.service';
+
+export class User{
+  constructor(
+    public username: string,
+    public email: string,
+    public password: string
+  ){}
+}
 
 @Component({
   selector: 'app-registration',
@@ -12,6 +23,10 @@ export class RegistrationComponent implements OnInit {
 
   //hide1 = true;
   //hide2 = true;
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  
 
   registerForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]{4,9}$')]),
@@ -20,20 +35,36 @@ export class RegistrationComponent implements OnInit {
     confirmPassword: new FormControl('', Validators.required)
   }, { validators: confirmPasswordValidator});
 
-  constructor() { }
+  constructor(
+      private registrationService: RegistrationService,
+      private router: Router
+  ) { }
 
   ngOnInit(): void {
    
   }
 
-  onSubmit(): void {
+  register(): void {
     
-    if (this.registerForm.invalid) {
+   /* if (this.registerForm.invalid) {
       return;
     }else{
       console.log('Works');
     }
+    */
+  
+   console.log('Works');
+
+   var registration = {
+     username: this.username,
+     email: this.email,
+     password: this.password
+     
+   }
+   console.log(registration);
+   this.registrationService.addUser(registration).subscribe();
   }
+  
 }
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
