@@ -1,1 +1,33 @@
-<br><p>login works!</p>
+<div class="container">
+    <h3 style="text-align: center">LOGIN</h3>
+    <br>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+      <div fxFlex="100%">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" name="username" required>
+          <mat-error *ngIf="loginForm.value.username">Invalid username.</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100%">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Password</mat-label>
+           <input matInput formControlName="password" name="password" type="password" required>
+           <mat-error *ngIf="loginForm.value.password">Invalid password.</mat-error>
+    
+        </mat-form-field>
+      </div>
+      
+        <br>
+
+        <div fxFlex="100%">
+          <button mat-stroked-button color="primary" type="submit">Login</button>
+      </div>
+     
+    </form>
+</div>
+
+
+    
+

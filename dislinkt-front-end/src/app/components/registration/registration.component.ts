@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   //hide2 = true;
 
   registerForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
+    username: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]{4,9}$')]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')]),
     confirmPassword: new FormControl('', Validators.required)
@@ -27,12 +27,13 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(): void {
+    
     if (this.registerForm.invalid) {
       return;
+    }else{
+      console.log('Works');
     }
-    // continue work here
   }
-  
 }
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {

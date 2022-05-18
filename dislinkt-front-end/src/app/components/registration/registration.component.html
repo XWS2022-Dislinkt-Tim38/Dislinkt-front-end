@@ -6,15 +6,15 @@
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Username</mat-label>
-          <input matInput formControlName="username" name="username">
-          <mat-error *ngIf="registerForm.value.username">Between 4 and 10 characters is acceptable.</mat-error>         
+          <input matInput formControlName="username" name="username" required>
+          <mat-error *ngIf="registerForm.value.username">Between 4 and 10 characters is acceptable, only letters and numbers.</mat-error>         
         </mat-form-field>
       </div>
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" name="email">
-          <mat-error *ngIf="registerForm.value.email">Email is not.</mat-error>
+          <input matInput formControlName="email" name="email" required>
+          <mat-error *ngIf="registerForm.value.email">Email is not valid.</mat-error>
         </mat-form-field>
       </div>
       <div fxFlex="100%">
@@ -32,9 +32,11 @@
       </mat-form-field>
       </div>
         <br>
-      <div>
-          <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+
+        <div fxFlex="100%">
+          <button mat-stroked-button color="primary" type="submit">Register</button>
       </div>
+     
     </form>
 </div>
 
