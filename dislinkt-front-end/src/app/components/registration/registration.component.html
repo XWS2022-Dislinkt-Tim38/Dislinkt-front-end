@@ -13,7 +13,7 @@
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" name="email"  [(ngModel)]="email" required>
+          <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email"  [(ngModel)]="email" required>
           <mat-error *ngIf="registerForm.value.email">Email is not valid.</mat-error>
         </mat-form-field>
       </div>

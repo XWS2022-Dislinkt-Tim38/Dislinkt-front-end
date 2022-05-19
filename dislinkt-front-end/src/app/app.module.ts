@@ -17,6 +17,8 @@ import { MatFormFieldModule, MatFormFieldAppearance} from '@angular/material/for
 import { MatInputModule } from '@angular/material/input'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -26,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavigationComponent,
     LoginComponent,
     RegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    PasswordRecoveryComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
