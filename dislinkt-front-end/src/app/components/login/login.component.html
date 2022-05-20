@@ -7,14 +7,15 @@
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Username</mat-label>
           <input matInput formControlName="username" name="username" [(ngModel)]="username" required>
-          <mat-error *ngIf="loginForm.value.username">Invalid username.</mat-error>
+          <mat-error *ngIf="loginForm.value.username">Between 4 and 10 characters is acceptable, only letters, numbers and period.</mat-error>         
         </mat-form-field>
       </div>
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Password</mat-label>
            <input matInput formControlName="password" name="password" type="password" [(ngModel)]="password" required>
-           <mat-error *ngIf="loginForm.value.password">Invalid password.</mat-error>
+           <mat-error *ngIf="loginForm.value.password">Password must be a combination of lower-case, upper-case, numbers and at least 9 characters long</mat-error>
+
     
         </mat-form-field>
       </div>

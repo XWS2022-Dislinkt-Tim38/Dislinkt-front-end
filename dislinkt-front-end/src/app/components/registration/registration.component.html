@@ -2,12 +2,25 @@
     <h3 style="text-align: center">REGISTRATION</h3>
     <br>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
-        
+      <div fxFlex="100%">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstname" name="firstname" [(ngModel)]="firstname" required>
+          <mat-error *ngIf="registerForm.value.firstname">Firstname invalid.</mat-error>         
+        </mat-form-field>
+      </div>
+      <div fxFlex="100%">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastname" name="lastname" [(ngModel)]="lastname" required>
+          <mat-error *ngIf="registerForm.value.lastname">Lastname invalid.</mat-error>         
+        </mat-form-field>
+      </div>
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Username</mat-label>
           <input matInput formControlName="username" name="username" [(ngModel)]="username" required>
-          <mat-error *ngIf="registerForm.value.username">Between 4 and 10 characters is acceptable, only letters and numbers.</mat-error>         
+          <mat-error *ngIf="registerForm.value.username">Between 4 and 10 characters is acceptable, only letters, numbers and period.</mat-error>         
         </mat-form-field>
       </div>
       <div fxFlex="100%">
@@ -15,6 +28,20 @@
           <mat-label>Email</mat-label>
           <input matInput placeholder="Ex. pat@example.com" formControlName="email" name="email"  [(ngModel)]="email" required>
           <mat-error *ngIf="registerForm.value.email">Email is not valid.</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100%">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Phone number</mat-label>
+          <input matInput formControlName="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" required>
+          <mat-error *ngIf="registerForm.value.phoneNumber">Phone number invalid.</mat-error>         
+        </mat-form-field>
+      </div>
+      <div fxFlex="100%">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" name="address" [(ngModel)]="address" required>
+          <mat-error *ngIf="registerForm.value.address">Address invalid.</mat-error>         
         </mat-form-field>
       </div>
       <div fxFlex="100%">

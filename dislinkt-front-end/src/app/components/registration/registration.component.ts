@@ -23,48 +23,62 @@ export class RegistrationComponent implements OnInit {
 
   //hide1 = true;
   //hide2 = true;
+  firstname: string = '';
+  lastname: string = '';
   username: string = '';
   email: string = '';
   password: string = '';
+  phoneNumber: string = '';
+  address: string = '';
   
 
   registerForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]{4,9}$')]),
+    firstname:  new FormControl('', [Validators.required, Validators.pattern('^[A-Z][A-za-z ]{1,15}')]),
+    lastname:  new FormControl('', [Validators.required, Validators.pattern('^[A-Z][A-za-z ]{1,15}')]),
+    phoneNumber:  new FormControl('', [Validators.required, Validators.pattern('[0-9]{6,12}')]),
+    address:  new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]{4,20}$')]),
+    username: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9.]{4,9}$')]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')]),
     confirmPassword: new FormControl('', Validators.required)
-  }, { validators: confirmPasswordValidator});
+  }, {validators: confirmPasswordValidator});
 
   constructor(
-      private registrationService: RegistrationService,
-
+      private registrationService: RegistrationService
+     
   ) { }
 
   ngOnInit(): void {
    
   }
 
+  
+
   register(): void {
     
    /* if (this.registerForm.invalid) {
       return;
     }else{
-      console.log('Works');
-    }
-    */
+     */
+    
   
    console.log('Works');
 
-   var registration = {
-     username: this.username,
-     email: this.email,
-     password: this.password
-     
-   }
-   console.log(registration);
-   this.registrationService.addUser(registration).subscribe();
-  }
+    var registration = {
+      username: this.username,
+      email: this.email,
+      password: this.password,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      phoneNumber: this.phoneNumber,
+      address: this.address
+    }
+    console.log(registration);
+    this.registrationService.addUser(registration).subscribe();
   
+  }
+
+
 }
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
