@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if(this.loginForm.invalid){
+      alert('Invalid input. Try again.');
       return;
     }else{
       console.log('Works');

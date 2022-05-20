@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
   password: string = '';
   phoneNumber: string = '';
   address: string = '';
-  
+  confirmPassword: string = '';
 
   registerForm = new FormGroup({
     firstname:  new FormControl('', [Validators.required, Validators.pattern('^[A-Z][A-za-z ]{1,15}')]),
@@ -41,8 +41,8 @@ export class RegistrationComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')]),
     confirmPassword: new FormControl('', Validators.required)
-  }, {validators: confirmPasswordValidator});
-
+  });
+  
   constructor(
       private registrationService: RegistrationService
      
@@ -56,34 +56,27 @@ export class RegistrationComponent implements OnInit {
 
   register(): void {
     
-   /* if (this.registerForm.invalid) {
-      return;
-    }else{
-     */
-    
-  
-   console.log('Works');
+    if (this.registerForm.valid && (this.password === this.confirmPassword)) {
+        console.log('Works');
 
-    var registration = {
-      username: this.username,
-      email: this.email,
-      password: this.password,
-      firstname: this.firstname,
-      lastname: this.lastname,
-      phoneNumber: this.phoneNumber,
-      address: this.address
+        var registration = {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          firstname: this.firstname,
+          lastname: this.lastname,
+          phoneNumber: this.phoneNumber,
+          address: this.address
+        }
+        console.log(registration);
+        this.registrationService.addUser(registration).subscribe();
+      
+    }else{
+      console.log('Failed',this.registerForm.invalid);
+      alert('Invalid input. Try again');
+      return;
     }
-    console.log(registration);
-    this.registrationService.addUser(registration).subscribe();
-  
   }
 
 
 }
-
-export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  const password = control.get('password');
-  const confirmPassword = control.get('confirmPassword');
-
-  return password && confirmPassword && password.value === confirmPassword.value ? { confirmPassword: true } : { confirmPassword: false };
-};

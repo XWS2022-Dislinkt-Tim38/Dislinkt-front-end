@@ -54,7 +54,7 @@
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Confirm Password</mat-label>
-          <input matInput formControlName="confirmPassword" name="confirmPassword" type="password" required pattern="{{registerForm.value.password}}">
+          <input matInput formControlName="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" type="password" required pattern="{{registerForm.value.password}}">
           <mat-error *ngIf="registerForm.value.confirmPassword">Passwords do not match.</mat-error>
       </mat-form-field>
       </div>
