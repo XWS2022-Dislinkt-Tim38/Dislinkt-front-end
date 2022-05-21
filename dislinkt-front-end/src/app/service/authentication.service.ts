@@ -30,14 +30,14 @@ export class AuthenticationService {
     }
 
     
-   
    public login(obj: any): Observable<any>{
         this.router.navigate(['/'])
         return this.http.post(environment.baseUrlAuthService + "/login", obj).pipe(
           tap((response: any) => {
+                         
+            this.storeToken(response.accessToken)
+            this.loggedUser = this.getUser(response.accessToken)               
             
-            this.loggedUser = this.getUser(response.accessToken)         
-            this.storeToken(response.accessToken)         
             console.log(this.loggedUser)
           
           })   

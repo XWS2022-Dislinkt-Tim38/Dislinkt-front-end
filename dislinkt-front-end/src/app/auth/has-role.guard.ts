@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../service/authentication.service';
 
@@ -8,7 +8,7 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class HasRoleGuard implements CanActivate {
 
-  constructor(public authService: AuthenticationService) {}
+  constructor(public authService: AuthenticationService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -16,7 +16,8 @@ export class HasRoleGuard implements CanActivate {
     
       const isAuthorized = this.authService.loggedUser?.role === route.data["role"]
 
-      if(!isAuthorized){
+      if(!isAuthorized){       
+        this.router.navigate(['/'])
         alert("You do not have rights to access this page!")
       }
     

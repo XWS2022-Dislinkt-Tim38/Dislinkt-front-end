@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -19,8 +18,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './auth.interceptor';
+import { AuthInterceptorProvider} from './auth.interceptor';
 import { MatCardModule} from '@angular/material/card';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component'
@@ -55,10 +53,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HttpClientModule,
     MatCardModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
-    ],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
