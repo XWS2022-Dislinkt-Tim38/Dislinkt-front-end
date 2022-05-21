@@ -1,14 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from './login.service';
-
-export class User{
-  constructor(
-    public username: string,
-    public password: string
-  ){}
-}
+import { AuthenticationService } from '../../service/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +18,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private loginService: LoginService
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +36,9 @@ export class LoginComponent implements OnInit {
         
       }
       console.log(login);
-      this.loginService.createAuthenticationToken(login).subscribe();
+      this.authService.login(login).subscribe(response => {
+        console.log(response);
+      });
     }
   
   }

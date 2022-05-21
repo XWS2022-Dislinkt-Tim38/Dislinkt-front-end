@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegistrationService } from 'src/app/components/registration/registration.service';
+import { RegistrationService } from 'src/app/service/registration.service';
 
 export class User{
   constructor(
@@ -53,7 +53,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   
-
   register(): void {
     
     if (this.registerForm.valid && (this.password === this.confirmPassword)) {
@@ -63,13 +62,15 @@ export class RegistrationComponent implements OnInit {
           username: this.username,
           email: this.email,
           password: this.password,
-          firstname: this.firstname,
-          lastname: this.lastname,
+          firstName: this.firstname,
+          lastName: this.lastname,
           phoneNumber: this.phoneNumber,
           address: this.address
         }
         console.log(registration);
-        this.registrationService.addUser(registration).subscribe();
+        this.registrationService.addUser(registration).subscribe(response => {
+          console.log(response);
+        });
       
     }else{
       console.log('Failed',this.registerForm.invalid);

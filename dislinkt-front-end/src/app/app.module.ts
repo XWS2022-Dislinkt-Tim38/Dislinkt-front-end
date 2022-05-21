@@ -17,8 +17,10 @@ import { MatFormFieldModule, MatFormFieldAppearance} from '@angular/material/for
 import { MatInputModule } from '@angular/material/input'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth.interceptor';
 
 
 
@@ -47,7 +49,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
