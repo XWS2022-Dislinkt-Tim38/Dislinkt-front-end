@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ForgotPasswordService } from 'src/app/service/forgot-password.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -8,31 +10,47 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 })
 export class PasswordRecoveryComponent implements OnInit {
 
-  password: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
+  tokenId: string = '';
 
   passwordRecoveryForm = new FormGroup({
-    password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')]),
     newPassword:  new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')]),
     confirmPassword: new FormControl('', Validators.required)
   });
 
-  constructor() { }
+  constructor(
+      private forgotPasswordService: ForgotPasswordService,
+      private route: ActivatedRoute
+  ) {
+    
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   //proveriti da li je token istekao
+    
+  }
+
+  public get token(){
+    return this.route.snapshot.paramMap.get('id')
   }
 
   changePassword(): void {
 
-    if (this.passwordRecoveryForm.valid) {
+    if (this.passwordRecoveryForm.valid && (this.newPassword === this.confirmPassword)) {
 
         console.log('Works');
-        var passwords = {
-        password: this.password,
-        newPassword: this.newPassword
-      }
-      console.log(passwords);
+        var passwordRecovery = {
+        
+          tokenId: this.route.snapshot.paramMap.get('id'),
+          newPassword: this.newPassword
+       }
+      console.log(passwordRecovery);
+     
+      this.forgotPasswordService.changePassword(passwordRecovery).subscribe(
+        response => {
+          console.log(response);
+      });
+      
     }else{
       console.log('Failed',this.passwordRecoveryForm.invalid);
       alert('Invalid input. Try again');

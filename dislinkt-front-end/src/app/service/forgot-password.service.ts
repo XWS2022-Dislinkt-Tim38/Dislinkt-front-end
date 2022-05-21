@@ -13,4 +13,12 @@ import { environment } from "src/environments/environment";
     public resetPasswordRequest(email: any): Observable<any>{
         return this.http.post(environment.baseUrlUserService +"/resetPasswordRequest", email);
     }
+
+    public checkIfExpired(tokenId: string): Observable<boolean> {   
+      return this.http.get<boolean>(environment.baseUrlTokenService + "/recovery/" + {tokenId});  
+    }
+    
+    public changePassword(obj: any): Observable<any> {
+      return this.http.post(environment.baseUrlUserService + "/changePassword", obj);
+    }
   }
