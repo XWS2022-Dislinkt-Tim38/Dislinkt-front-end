@@ -7,7 +7,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { HasRoleGuard } from './auth/authentication.guard';
+import { HasRoleGuard } from './auth/has-role.guard';
+import { LoggedInGuard } from './auth/logged-in.guard';
 
 const routes: Routes = [
 
@@ -25,7 +26,7 @@ const routes: Routes = [
   
   {
     path: "admin", component: AdminComponent,
-    canActivate: [HasRoleGuard],
+    canActivate: [LoggedInGuard, HasRoleGuard],
     data: {
       role: 'ADMIN'
     }
@@ -33,7 +34,7 @@ const routes: Routes = [
 
   {
     path: "user", component: UserProfileComponent,
-    canActivate: [HasRoleGuard],
+    canActivate: [LoggedInGuard, HasRoleGuard],
     data: {
       role: 'USER'
     }
