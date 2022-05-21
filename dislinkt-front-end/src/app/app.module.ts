@@ -21,6 +21,7 @@ import { PasswordRecoveryComponent } from './components/password-recovery/passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth.interceptor';
+import { MatCardModule} from '@angular/material/card'
 
 
 
@@ -47,7 +48,8 @@ import { TokenInterceptor } from './auth.interceptor';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [
     {

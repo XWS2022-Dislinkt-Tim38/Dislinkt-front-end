@@ -48,8 +48,10 @@ export class RegistrationComponent implements OnInit {
      
   ) { }
 
+  regSuccess:boolean = false;
+
   ngOnInit(): void {
-   
+    this.regSuccess = false;
   }
 
   
@@ -70,6 +72,7 @@ export class RegistrationComponent implements OnInit {
         console.log(registration);
         this.registrationService.addUser(registration).subscribe(response => {
           console.log(response);
+          this.regSuccess = true;
         });
       
     }else{

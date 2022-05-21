@@ -1,4 +1,6 @@
 <div class="container">
+  <mat-card *ngIf="this.regSuccess" class="mat-card">Thank you for registering! You need to verify your E-Mail before using your account.</mat-card>
+  <br>
     <h3 style="text-align: center">REGISTRATION</h3>
     <br>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
