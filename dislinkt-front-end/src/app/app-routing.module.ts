@@ -5,6 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { HasRoleGuard } from './auth/authentication.guard';
 
 const routes: Routes = [
 
@@ -18,7 +21,23 @@ const routes: Routes = [
   },
   {path: "registration", component: RegistrationComponent },
   {path: "forgot-password", component: ForgotPasswordComponent},
-  {path: "password-recovery", component: PasswordRecoveryComponent}
+  {path: "password-recovery", component: PasswordRecoveryComponent},
+  
+  {
+    path: "admin", component: AdminComponent,
+    canActivate: [HasRoleGuard],
+    data: {
+      role: 'ADMIN'
+    }
+  },
+
+  {
+    path: "user", component: UserProfileComponent,
+    canActivate: [HasRoleGuard],
+    data: {
+      role: 'USER'
+    }
+  }
 ];
 
 @NgModule({

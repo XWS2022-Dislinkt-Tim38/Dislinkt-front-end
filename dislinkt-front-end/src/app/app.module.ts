@@ -21,7 +21,9 @@ import { PasswordRecoveryComponent } from './components/password-recovery/passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth.interceptor';
-import { MatCardModule} from '@angular/material/card'
+import { MatCardModule} from '@angular/material/card';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component'
 
 
 
@@ -33,7 +35,9 @@ import { MatCardModule} from '@angular/material/card'
     RegistrationComponent,
     HomeComponent,
     PasswordRecoveryComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

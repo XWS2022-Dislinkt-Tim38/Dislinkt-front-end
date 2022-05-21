@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { environment } from 'src/environments/environment';
 import {Router, ActivatedRoute } from "@angular/router";
+import { UserModel } from "../model/user";
 
 
 @Injectable({
@@ -13,24 +14,43 @@ import {Router, ActivatedRoute } from "@angular/router";
 
 export class AuthenticationService {
 
-    
-    constructor(private http: HttpClient, private router: Router,  private activeRoute: ActivatedRoute) { 
-      const token = localStorage.getItem("regUserToken")
-      this._isLoggedIn$.next(!!token)
-    }
-
+    loggedUser: UserModel | null
     private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
     isLoggedIn$ = this._isLoggedIn$.asObservable()
+
+    get token(): any {
+      return localStorage.getItem('regUserToken');
+    }
+
+    constructor(private http: HttpClient, private router: Router,  private activeRoute: ActivatedRoute) { 
+
+      this._isLoggedIn$.next(!!this.token)
+      this.loggedUser = this.getUser(this.token)
+    
+    }
+
+    
    
    public login(obj: any): Observable<any>{
         this.router.navigate(['/'])
         return this.http.post(environment.baseUrlAuthService + "/login", obj).pipe(
           tap((response: any) => {
             
-            this.storeToken(response.accessToken)
-            console.log(response.accessToken)})                             
+            this.loggedUser = this.getUser(response.accessToken)         
+            this.storeToken(response.accessToken)         
+            console.log(this.loggedUser)
+          
+          })   
+                                      
         )
         
+    }
+
+    private getUser(token: string): UserModel | null {
+      if (!token) {
+        return null
+      }
+      return JSON.parse(atob(token.split('.')[1])) as UserModel;
     }
 
     public storeToken(accessToken: any) {
@@ -50,5 +70,6 @@ export class AuthenticationService {
       this.router.navigate([currentUrl]);
       });
     }
+    
 
 }
