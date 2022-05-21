@@ -6,7 +6,7 @@
         </span>
         <div class="spacer"> </div>
         <div *ngIf="authService.isLoggedIn$ | async; else notlogged">
-            <a class="itemSpacer" mat-flat-button color="primary" routerLink="login">Log out</a>
+            <a class="itemSpacer" mat-flat-button color="primary" (click)="authService.logout()">Log out</a>
         </div>
         <div>
             <ng-template #notlogged>
