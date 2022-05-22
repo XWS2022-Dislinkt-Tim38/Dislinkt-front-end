@@ -34,7 +34,7 @@ const routes: Routes = [
 
   {
     path: "user", component: UserProfileComponent,
-    canActivate: [LoggedInGuard, HasRoleGuard],
+    canActivate: [LoggedInGuard],
     data: {
       role: 'USER'
     }
