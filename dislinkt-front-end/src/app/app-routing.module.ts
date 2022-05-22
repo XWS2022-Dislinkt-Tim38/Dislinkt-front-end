@@ -28,7 +28,7 @@ const routes: Routes = [
     component: ForgotPasswordComponent
   },
   {
-    path: "password-recovery", 
+    path: "password-recovery/:id", 
     component: PasswordRecoveryComponent
   },
   

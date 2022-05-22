@@ -71,8 +71,9 @@ export class RegistrationComponent implements OnInit {
         }
         console.log(registration);
         this.registrationService.addUser(registration).subscribe(response => {
-          console.log(response);
           this.regSuccess = true;
+          alert("Confirmation email sent!")
+          window.location.href="http://localhost:4200/login"
         });
       
     }else{
