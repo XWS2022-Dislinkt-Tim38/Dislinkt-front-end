@@ -9,20 +9,27 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HasRoleGuard } from './auth/has-role.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
+import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'; 
 
 const routes: Routes = [
 
   {path: "", component: HomeComponent },
-  {path: "login",
-   component: LoginComponent,
-  /* children: [
-     {path: "forgot-password", component: ForgotPasswordComponent}
-   ]
-*/
+  {
+    path: "login",
+    component: LoginComponent,
   },
-  {path: "registration", component: RegistrationComponent },
-  {path: "forgot-password", component: ForgotPasswordComponent},
-  {path: "password-recovery", component: PasswordRecoveryComponent},
+  {
+    path: "registration", 
+    component: RegistrationComponent },
+ 
+  {
+    path: "forgot-password",
+    component: ForgotPasswordComponent
+  },
+  {
+    path: "password-recovery", 
+    component: PasswordRecoveryComponent
+  },
   
   {
     path: "admin", component: AdminComponent,
@@ -38,7 +45,8 @@ const routes: Routes = [
     data: {
       role: 'USER'
     }
-  }
+  },
+  { path: "passwordless", component: PasswordlessLoginComponent}
 ];
 
 @NgModule({

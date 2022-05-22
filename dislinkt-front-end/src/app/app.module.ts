@@ -21,7 +21,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { AuthInterceptorProvider} from './auth.interceptor';
 import { MatCardModule} from '@angular/material/card';
 import { AdminComponent } from './components/admin/admin.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component'
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'
 
 
 
@@ -35,7 +36,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     PasswordRecoveryComponent,
     ForgotPasswordComponent,
     AdminComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PasswordlessLoginComponent
   ],
   imports: [
     BrowserModule,

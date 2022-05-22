@@ -1,7 +1,7 @@
 <div class="container">
     <h3 style="text-align: center">LOGIN</h3>
     <br>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form *ngIf="!this.isPasswordless" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         
       <div fxFlex="100%">
         <mat-form-field appearance="fill" class="form-field">
@@ -24,9 +24,26 @@
         
       <div fxFlex="100%">
           <button mat-stroked-button color="primary" type="submit">Login</button>
+          <br><br><br>
+          <button mat-stroked-button color="primary" (click)="setToPasswordless()">Passwordless Login</button>
       </div>
      
     </form>
+    <div *ngIf="this.isPasswordless">
+      <form [formGroup]="passwordlessLoginForm" class="example-form" (ngSubmit)="loginPasswordless()">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" name="email" type="email" 
+                 placeholder="Ex. pat@example.com" [(ngModel)]="email" required> 
+          <mat-error *ngIf="passwordlessLoginForm.value.email">Email is not valid.</mat-error>
+
+        </mat-form-field>
+      
+      <div fxFlex="100%">
+          <button mat-stroked-button color="primary" type="submit">Send</button>
+      </div>
+    </form>
+    </div>
 </div>
 
 

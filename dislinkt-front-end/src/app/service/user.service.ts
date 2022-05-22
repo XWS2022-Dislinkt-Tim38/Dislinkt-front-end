@@ -12,11 +12,11 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     public testAdmin(): Observable<any>{
-        return this.http.get(environment.baseUrlAuthService + "/role/testadmin");
+        return this.http.get(environment.baseUrlUserService + "/role/testadmin");
     }
 
     public testUser(): Observable<any>{
-        return this.http.get(environment.baseUrlAuthService + "/role/testuser");
+        return this.http.get(environment.baseUrlUserService + "/role/testuser");
     }
- 
+
 }

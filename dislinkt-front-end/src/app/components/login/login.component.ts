@@ -11,17 +11,25 @@ export class LoginComponent implements OnInit {
 
   username: string = '';
   password: string = '';
+  email: string = '';
+  isPasswordless: boolean = false;
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9.]{4,9}$')]),
     password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')])
   });
 
+  passwordlessLoginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email])
+ 
+  });
+
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit(): void {
+    this.isPasswordless = false
   }
 
   onSubmit(): void {
@@ -39,5 +47,18 @@ export class LoginComponent implements OnInit {
       this.authService.login(login).subscribe()
     }
   
+  }
+
+  setToPasswordless(): void{
+    this.isPasswordless = true
+  }
+
+  loginPasswordless(): void{
+    this.authService.passwordlessLoginSendEmail(this.email).subscribe(response => {
+      if(response) alert('Successfully sent email to the user')
+      else alert ("User can not be found")
+
+      window.location.href="http://localhost:4200/login"
+    })
   }
 }
