@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ForgotPasswordService } from 'src/app/service/forgot-password.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,12 +14,14 @@ export class ForgotPasswordComponent implements OnInit {
   email: string = '';
 
   forgotPasswordForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email])
- 
+    email: new FormControl('', [Validators.required, Validators.email]) 
   });
-  constructor() { }
+  
+  constructor(
+    private forgotPasswordService: ForgotPasswordService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   send(): void {
@@ -26,6 +30,10 @@ export class ForgotPasswordComponent implements OnInit {
     }else{
       console.log('Works');
       console.log(this.email);
+      this.forgotPasswordService.resetPasswordRequest(this.email).subscribe(
+        response => {
+          console.log(response+"super");
+      });
     }
   }
 

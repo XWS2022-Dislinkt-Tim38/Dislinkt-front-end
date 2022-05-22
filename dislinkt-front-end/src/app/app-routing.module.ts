@@ -18,6 +18,7 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent,
   },
+
   {
     path: "registration", 
     component: RegistrationComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
     }
   },
   { path: "passwordless", component: PasswordlessLoginComponent}
+
 ];
 
 @NgModule({
