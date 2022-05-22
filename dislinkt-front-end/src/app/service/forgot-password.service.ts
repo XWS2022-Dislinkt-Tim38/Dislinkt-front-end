@@ -1,4 +1,5 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { partitionArray } from "@angular/compiler/src/util";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -15,7 +16,7 @@ import { environment } from "src/environments/environment";
     }
 
     public checkIfExpired(tokenId: string): Observable<boolean> {   
-      return this.http.get<boolean>(environment.baseUrlTokenService + "/recovery/" + {tokenId});  
+      return this.http.get<boolean>(environment.baseUrlTokenService + "/recovery/"+tokenId);  
     }
     
     public changePassword(obj: any): Observable<any> {

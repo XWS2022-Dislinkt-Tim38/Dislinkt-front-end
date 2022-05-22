@@ -13,6 +13,7 @@ export class PasswordRecoveryComponent implements OnInit {
   newPassword: string = '';
   confirmPassword: string = '';
   tokenId: string = '';
+  isExpired: boolean = false;
 
   passwordRecoveryForm = new FormGroup({
     newPassword:  new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$')]),
@@ -26,8 +27,30 @@ export class PasswordRecoveryComponent implements OnInit {
     
    }
 
-  ngOnInit(): void {   //proveriti da li je token istekao
-    
+  ngOnInit(): void {   
+
+     /* this.forgotPasswordService.checkIfExpired(this.tokenId).subscribe(response=>
+        {
+          console.log(response);
+           this.isExpired = response;
+           console.log(this.isExpired);
+           if(this.isExpired)
+              alert('Token expired')
+        });
+      */ 
+       /*
+       this.route.queryParams.subscribe(params => {
+          this.tokenId = params['tokenId'];
+          this.forgotPasswordService.checkIfExpired(this.tokenId).subscribe(response => {
+            this.isExpired = response;
+            console.log(this.isExpired)
+            if(!this.isExpired)
+              alert('Token is valid')
+          }, error => {
+            alert('Token Expireed');
+          })
+       });
+        */
   }
 
   public get token(){
@@ -44,8 +67,9 @@ export class PasswordRecoveryComponent implements OnInit {
           tokenId: this.route.snapshot.paramMap.get('id'),
           newPassword: this.newPassword
        }
+      //var passwordRecoveryObj = JSON.stringify(passwordRecovery)
+     // console.log(JSON.stringify(passwordRecovery));
       console.log(passwordRecovery);
-     
       this.forgotPasswordService.changePassword(passwordRecovery).subscribe(
         response => {
           console.log(response);
