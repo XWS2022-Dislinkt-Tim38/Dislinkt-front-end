@@ -22,9 +22,12 @@ import { AuthInterceptorProvider} from './auth.interceptor';
 import { MatCardModule} from '@angular/material/card';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'
-
-
+import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -42,18 +45,23 @@ import { PasswordlessLoginComponent } from './components/passwordless-login/pass
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatButtonModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatMenuModule,
     MatListModule,
-    BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]

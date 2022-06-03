@@ -18,5 +18,10 @@ export class UserService {
     public testUser(): Observable<any>{
         return this.http.get(environment.baseUrlUserService + "/role/testuser");
     }
+    
+    public getUserByUsername(username: string): Observable<any>{
+        return this.http.get(environment.baseUrlUserService + "/username?username="+username);
+    }
+
 
 }
