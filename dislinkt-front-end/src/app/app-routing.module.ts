@@ -10,6 +10,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HasRoleGuard } from './auth/has-role.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'; 
+import { PostsPublicComponent } from './components/posts-public/posts-public.component';
 
 const routes: Routes = [
 
@@ -47,7 +48,14 @@ const routes: Routes = [
       role: 'USER'
     }
   },
-  { path: "passwordless", component: PasswordlessLoginComponent}
+  { 
+    path: "passwordless", 
+    component: PasswordlessLoginComponent
+  },
+  {
+    path: "posts",
+    component: PostsPublicComponent
+  }
 
 ];
 

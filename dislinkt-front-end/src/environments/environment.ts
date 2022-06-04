@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
   "baseUrlUserService": "http://localhost:8000/user",
+  "baseUrlPostService": "http://localhost:8001/post",
   "baseUrlAuthService": "http://localhost:8002/auth",
   "baseUrlTokenService": "http://localhost:8000/token"
+
 };
 
 /*
