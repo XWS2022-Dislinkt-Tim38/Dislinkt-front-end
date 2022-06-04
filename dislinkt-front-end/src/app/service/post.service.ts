@@ -15,6 +15,12 @@ export class PostService {
         return this.http.get(environment.baseUrlPostService + "/public");
     }
 
+    public getFeed(userId: String): Observable<any>{
+        return this.http.get(environment.baseUrlPostService + "/feed/" + userId);
+    }
+
+    
+
     
 
 }

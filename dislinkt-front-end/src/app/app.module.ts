@@ -24,7 +24,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component';
 import { PostsPublicComponent } from './components/posts-public/posts-public.component'
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { FeedComponent } from './components/feed/feed.component'
 
 
 
@@ -40,7 +41,8 @@ import { DatePipe } from '@angular/common'
     AdminComponent,
     UserProfileComponent,
     PasswordlessLoginComponent,
-    PostsPublicComponent
+    PostsPublicComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
