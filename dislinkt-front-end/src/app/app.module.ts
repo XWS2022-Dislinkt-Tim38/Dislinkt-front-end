@@ -22,7 +22,8 @@ import { AuthInterceptorProvider} from './auth.interceptor';
 import { MatCardModule} from '@angular/material/card';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'
+import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component';
+import { PostsPublicComponent } from './components/posts-public/posts-public.component'
 
 
 
@@ -37,7 +38,8 @@ import { PasswordlessLoginComponent } from './components/passwordless-login/pass
     ForgotPasswordComponent,
     AdminComponent,
     UserProfileComponent,
-    PasswordlessLoginComponent
+    PasswordlessLoginComponent,
+    PostsPublicComponent
   ],
   imports: [
     BrowserModule,
