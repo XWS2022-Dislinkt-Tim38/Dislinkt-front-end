@@ -13,7 +13,7 @@
         </mat-card-header>
    
         <mat-card-content>
-            <form [formGroup]="profileForm">
+            <form [formGroup]="profileForm"  (ngSubmit)="save()">
         
                 <div fxLayout="row" fxLayoutAlign="space-between">
                     <div  fxFlex="0 0 47%">
@@ -66,32 +66,163 @@
                         <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
                             <mat-label>Gender</mat-label>
                             <input matInput>
-                                <mat-radio-group matInput>
+                                <mat-radio-group matInput name="gender" formControlName="gender" [(ngModel)]="this.user.gender">
                                 <mat-radio-button name="male" value="male">male</mat-radio-button>
                                 <mat-radio-button name="female" value="female">female</mat-radio-button>
                             </mat-radio-group>
                         </mat-form-field>
                     </div>
                 
+                
                     <div fxLayout="column" fxFlex="0 0 47%">
                         <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
                             <mat-label>Date of Birth</mat-label>
-                            <input matInput [matDatepicker]="picker">
+                            <input matInput [matDatepicker]="picker" name="dateOfBirth" formControlName="dateOfBirth" [(ngModel)]="this.user.dateOfBirth">
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>            
                         </mat-form-field>
                     </div>
+
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Is Public</mat-label>
+                            <input matInput>
+                                <mat-radio-group matInput name="isPublic" formControlName="isPublic" [(ngModel)]="this.user.isPublic">
+                                <mat-radio-button name="public" [value]=true>public</mat-radio-button>
+                                <mat-radio-button name="private" [value]=false>private</mat-radio-button>
+                            </mat-radio-group>
+                        </mat-form-field>
+                    
+                    </div>
+                <!--    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Biography</mat-label>
+                            <input matInput name="biography" [(ngModel)]="this.user.profile.biography" [ngModelOptions]="{standalone: true}">
+                        </mat-form-field>
+                    </div>
+                -->
                 </div>
+               
+                
+              
                 <br>
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <div fxLayout="row" fxFlex="0 0 30%" fxLayoutAlign="space-between center">
-                        <button mat-stroked-button color="primary">Save</button>&nbsp;
-                        <button mat-stroked-button color="primary">Cancel</button>
+                        <button mat-flat-button color="primary" type="submit">Save</button>
                     </div>
                 </div>
-
             </form>
         </mat-card-content>
     </mat-card>
+
+   
+    <mat-card class="custom">
+        <mat-card-header>
+            <mat-card-title>Skills</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div fxLayout="column" fxFlex="0 0 47%">
+                <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                    <input matInput value="Bla bla">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+
+
+    <mat-card class="custom">
+        <mat-card-header>
+            <mat-card-title>Interests</mat-card-title>
+        </mat-card-header>  
+        <mat-card-content>
+           
+            <div fxLayout="column" fxFlex="0 0 47%">
+                <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                    <input matInput value="Bla bla">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Education</mat-card-title>
+        </mat-card-header>
+   
+        <mat-card-content>
+            <div fxLayout="column" fxFlex="0 0 47%">
+                    <mat-form-field appearance="fill" style="margin-top: 20px;">
+                        <mat-label>Institution Type</mat-label>
+                        <input matInput value="Bla bla">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="margin-top: 20px;">
+                        <mat-label>Institution Name</mat-label>
+                        <input matInput value="Bla bla">
+                    </mat-form-field>
+                     <mat-form-field appearance="fill" style="margin-top: 20px;">
+                        <mat-label>Title</mat-label>
+                        <input matInput value="Bla bla">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="margin-top: 20px;">
+                        <mat-label>Start Date</mat-label>
+                        <input matInput [matDatepicker]="picker1">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>     
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="margin-top: 20px;">
+                        <mat-label>End Date</mat-label>
+                        <input matInput [matDatepicker]="picker2">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>            
+                    </mat-form-field>
+                </div>
+            
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Experience</mat-card-title>
+        </mat-card-header>
+   
+        <mat-card-content>
+            <div fxLayout="column" fxFlex="0 0 47%">
+                <mat-form-field appearance="fill" style="margin-top: 20px;">
+                    <mat-label>Company name</mat-label>
+                    <input matInput value="Bla bla">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="margin-top: 20px;">
+                    <mat-label>City</mat-label>
+                    <input matInput value="Bla bla">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="margin-top: 20px;">
+                    <mat-label>Job title</mat-label>
+                    <input matInput value="Bla bla">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="margin-top: 20px;">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="picker3">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>     
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="margin-top: 20px;">
+                    <mat-label>End Date</mat-label>
+                    <input matInput [matDatepicker]="picker4">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                    <mat-datepicker #picker4></mat-datepicker>            
+                </mat-form-field>
+            </div>
+            
+        </mat-card-content>
+    </mat-card>
+
+    
 </div>

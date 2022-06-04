@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from 'src/app/model/user';
+import { UserProfile } from 'src/app/model/userProfile';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -25,9 +26,14 @@ export class UserProfileComponent implements OnInit {
   email: string = '';
   phoneNumber: string = '';
   dateOfBirth: string = '';
+  isPublic: boolean = false;
+
+  biography: string = '';
 
   userInfo?: UserTokenModel
   user= new UserModel();
+
+  profile = new UserProfile();
 
   profileForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -36,7 +42,10 @@ export class UserProfileComponent implements OnInit {
     address: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.required),
-  
+    gender: new FormControl(),
+    dateOfBirth: new FormControl(),
+    isPublic: new FormControl(),
+    biography: new FormControl()
   });
   
   constructor(private userService: UserService, private authService: AuthenticationService) { }
@@ -50,6 +59,7 @@ export class UserProfileComponent implements OnInit {
       this.userService.getUserByUsername(this.userInfo?.sub).subscribe((user: UserModel)  => {
           this.user = user;
       });
+     
   }
 
   testUser(): void{
@@ -62,6 +72,11 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  
+  save(): void {
+    this.userService.updateUser(this.user).subscribe((user: UserModel) =>{      
+          this.user = user;    
+          
+    });
+  }
 
 }

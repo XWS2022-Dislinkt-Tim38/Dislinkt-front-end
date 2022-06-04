@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit {
   phoneNumber: string = '';
   dateOfBirth: string = '';
 
+
   userInfo?: UserTokenModel
   user= new UserModel();
 
@@ -31,7 +32,8 @@ export class AdminComponent implements OnInit {
     address: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.required),
-  
+    gender: new FormControl(),
+    dateOfBirth: new FormControl()
   });
   
   constructor(private userService: UserService, private authService: AuthenticationService) { }
@@ -54,5 +56,11 @@ export class AdminComponent implements OnInit {
     }, error => {
         alert("You are not authorized to see this page")
     })
+  }
+
+  save(): void {
+    this.userService.updateUser(this.user).subscribe((user: UserModel) =>{
+          this.user = user;
+    });
   }
 }

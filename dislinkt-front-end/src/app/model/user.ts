@@ -1,3 +1,5 @@
+import { UserProfile } from "./userProfile";
+
 export class UserModel{
     role?: string='';
     id?: string='';
@@ -13,4 +15,6 @@ export class UserModel{
     isVerified?: boolean=false;
     sub?: string='';
     gender?: string = '';
+    isPublic?: boolean = false;
+    profile?: UserProfile = new UserProfile();
 }

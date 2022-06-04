@@ -23,5 +23,10 @@ export class UserService {
         return this.http.get(environment.baseUrlUserService + "/username?username="+username);
     }
 
+    public updateUser(obj:any): Observable<any>{
+        return this.http.put(environment.baseUrlUserService, obj);
+    }
+	
+
 
 }
