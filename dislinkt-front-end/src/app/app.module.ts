@@ -28,8 +28,11 @@ import { DatePipe } from '@angular/common';
 import { FeedComponent } from './components/feed/feed.component';
 import { MyPostsComponent } from './components/my-posts/my-posts.component';
 import { AddPostComponent } from './components/add-post/add-post.component'
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -51,18 +54,23 @@ import { AddPostComponent } from './components/add-post/add-post.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatButtonModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatMenuModule,
     MatListModule,
-    BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [AuthInterceptorProvider, DatePipe],
   bootstrap: [AppComponent]

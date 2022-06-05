@@ -5,3 +5,91 @@
 <div>
     <a mat-flat-button color="primary" (click)="testAdmin()">TEST API Call</a>
 </div>
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Profile Information</mat-card-title>
+        </mat-card-header>
+   
+        <mat-card-content>
+            <form [formGroup]="profileForm" (ngSubmit)="save()">
+        
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <div  fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstName" name="firstName" [(ngModel)]="this.user.firstName">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastName" name="lastName"  [(ngModel)]="this.user.lastName">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start">
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Username</mat-label>
+                            <input matInput formControlName="username" name="username"  [(ngModel)]="this.user.username">
+                        </mat-form-field>
+                    </div>
+                
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" name="email"  [(ngModel)]="this.user.email">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start">
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput formControlName="phoneNumber" name="phoneNumber"  [(ngModel)]="this.user.phoneNumber">
+                        </mat-form-field>
+                    </div>
+                    
+                    
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="address" name="address"  [(ngModel)]="this.user.address">
+                        </mat-form-field>
+                    </div>           
+                </div>
+                
+                <div fxLayout="row" fxLayoutAlign="start">
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Gender</mat-label>
+                            <input matInput>
+                                <mat-radio-group matInput name="gender" formControlName="gender" [(ngModel)]="this.user.gender">
+                                <mat-radio-button name="male" value="male">male</mat-radio-button>
+                                <mat-radio-button name="female" value="female">female</mat-radio-button>
+                            </mat-radio-group>
+                        </mat-form-field>
+                    </div>
+                
+                    <div fxLayout="column" fxFlex="0 0 47%">
+                        <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" name="dateOfBirth" formControlName="dateOfBirth" [(ngModel)]="this.user.dateOfBirth">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>            
+                        </mat-form-field>
+                    </div>
+                </div>
+                <br>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div fxLayout="row" fxFlex="0 0 30%" fxLayoutAlign="space-between center">
+                        <button mat-stroked-button color="primary" type="submit">Save</button>
+                    </div>
+                </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
