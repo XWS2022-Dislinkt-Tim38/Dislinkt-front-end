@@ -30,13 +30,16 @@ export class UserProfileComponent implements OnInit {
   following: Number[] = [];
   followers: Number[] = [];
 
-  biography: string = '';
+  biography?: string = '';
+  skills : string[] = [];
+  interests: string[] =[];
+
+  profile = new UserProfile();
 
   userInfo?: UserTokenModel
   user= new UserModel();
 
-  profile = new UserProfile();
-
+ 
   profileForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName:  new FormControl('', Validators.required),
@@ -58,11 +61,13 @@ export class UserProfileComponent implements OnInit {
         this.userInfo = JSON.parse(atob(this.authService.token.split('.')[1])) as UserTokenModel;
       }
       
+      
       this.userService.getUserByUsername(this.userInfo?.sub).subscribe((response)  => {
           console.log(response);
           this.following = response.following;
           this.followers = response.followers;
           this.user = response;
+          this.profile = response.profile;
       });
      
   }
@@ -78,9 +83,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   save(): void {
+
+
     this.userService.updateUser(this.user).subscribe((user: UserModel) =>{      
           this.user = user;    
-          
+          console.log(user)
+          console.log(user.profile.biography);
+
     });
   }
 
