@@ -24,6 +24,12 @@
             </mat-form-field>
         </div>
         <br>
+
+        <button class="mat-stroked-button" onclick="document.getElementById('inputImage').click()">Upload image</button>
+        <label style="margin-left: 5px" class="mat-card-subtitle">{{imageUrl.substring(12)}}</label>
+        <input type='file' (change)="addImage($event)" [(ngModel)]="imageUrl" id="inputImage" style="display:none"/>
+        <br><br>
+        <br>
         <button (click)="createPost()" mat-stroked-button style="color: white; background-color: #3f51b5;" type="submit">Create</button>
         <button (click)="cancel()" mat-stroked-button style="color: white; background-color: crimson; margin-left: 20px;"
             type="submit">Cancel</button>

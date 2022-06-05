@@ -18,6 +18,7 @@ export class AddPostComponent implements OnInit {
   userId: string = this.authService.loggedUser?.idUser;
   username: string = "";
   post: PostModel = new PostModel();
+  imageUrl: string = "";
 
   ngOnInit(): void {
     this.getUser();
@@ -27,10 +28,15 @@ export class AddPostComponent implements OnInit {
     this.router.navigate(['myPosts']);
   }
 
+  addImage(event: any) {
+    this.post.image = "/assets/img/" + this.imageUrl.substring(12);
+  }
+
   createPost() {
     if (this.post.content === undefined || this.post.content.length === 0
       || this.post.title === undefined || this.post.title.length === 0
       || this.post.link === undefined || this.post.link.length === 0
+      || this.post.image === undefined || this.post.image.length === 0
     ) {
       alert("Some fields are empty");
     }

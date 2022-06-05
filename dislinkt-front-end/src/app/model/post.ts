@@ -10,6 +10,7 @@ export class PostModel{
     dateEdited: Date = new Date()
     likes: string[] = []
     dislikes: string[] = []
+    image: string = ""
 
     datePostedString: string = ""
     dateEditedString: string = ""
