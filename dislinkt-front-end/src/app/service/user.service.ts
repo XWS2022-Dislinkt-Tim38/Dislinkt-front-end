@@ -19,4 +19,8 @@ export class UserService {
         return this.http.get(environment.baseUrlUserService + "/role/testuser");
     }
 
+    public getUser(id: String): Observable<any> {
+        return this.http.get(environment.baseUrlUserService + "/" + id);
+    }
+
 }

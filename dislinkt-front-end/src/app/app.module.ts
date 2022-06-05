@@ -25,7 +25,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component';
 import { PostsPublicComponent } from './components/posts-public/posts-public.component'
 import { DatePipe } from '@angular/common';
-import { FeedComponent } from './components/feed/feed.component'
+import { FeedComponent } from './components/feed/feed.component';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
+import { AddPostComponent } from './components/add-post/add-post.component'
 
 
 
@@ -42,7 +44,9 @@ import { FeedComponent } from './components/feed/feed.component'
     UserProfileComponent,
     PasswordlessLoginComponent,
     PostsPublicComponent,
-    FeedComponent
+    FeedComponent,
+    MyPostsComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

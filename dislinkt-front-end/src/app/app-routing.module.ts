@@ -12,6 +12,8 @@ import { LoggedInGuard } from './auth/logged-in.guard';
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'; 
 import { PostsPublicComponent } from './components/posts-public/posts-public.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 const routes: Routes = [
 
@@ -61,6 +63,16 @@ const routes: Routes = [
     path: "feed",
     canActivate: [LoggedInGuard],
     component: FeedComponent
+  },
+  {
+    path: "myPosts",
+    canActivate: [LoggedInGuard],
+    component: MyPostsComponent,
+  },
+  {
+    path: "addPost",
+    canActivate: [LoggedInGuard],
+    component: AddPostComponent,
   }
 
 ];
