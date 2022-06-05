@@ -18,7 +18,7 @@ export class PostsPublicComponent implements OnInit {
   following: string[] = []
   isLiked: boolean = false
 
-  constructor(private userService: UserService, private authService: AuthenticationService, private postService: PostService, private datePipe: DatePipe) { }
+  constructor(private userService: UserService, public authService: AuthenticationService, private postService: PostService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -74,24 +74,26 @@ export class PostsPublicComponent implements OnInit {
     if (post.followFlag === "FOLLOWING") {
       this.userService.unfollowUser(this.userId, post.ownerId).subscribe();
       alert("You unfollow user " + post.ownerId);
+      window.location.reload()
     }
     else {
       this.userService.followUser(this.userId, post.ownerId).subscribe();
   
       alert("You follow user " + post.ownerId);
+      window.location.reload()
     }
   }
 
   likePost(idPost: string) {
     this.postService.like(idPost, this.userId).subscribe({
-      next: () => {alert("Liked");}
+      next: () => {alert("Liked"); window.location.reload()}
     })
   }
 
   dislikePost(idPost: string) {
 
     this.postService.dislike(idPost, this.userId).subscribe({
-      next: () => {alert("Disliked");}
+      next: () => {alert("Disliked"); window.location.reload()}
     })
 
   }

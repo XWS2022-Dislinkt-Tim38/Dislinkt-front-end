@@ -48,4 +48,17 @@ export class FeedComponent implements OnInit {
     }
   }
 
+  likePost(idPost: string) {
+    this.postService.like(idPost, this.userId).subscribe({
+      next: () => {alert("Liked");}
+    })
+  }
+
+  dislikePost(idPost: string) {
+
+    this.postService.dislike(idPost, this.userId).subscribe({
+      next: () => {alert("Disliked");}
+    })
+  }
+
 }

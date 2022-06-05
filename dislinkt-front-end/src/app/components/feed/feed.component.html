@@ -17,6 +17,12 @@
                 <br><br>
                 {{post.content}}
             </mat-card-content>
+            <mat-card-footer>
+                <div>
+                    <button (click)="likePost(post.id)" style="background-color: transparent; border: none; color: rgb(255,64,129);"><mat-icon style="margin-left:auto;">thumb_up</mat-icon></button>  
+                    <button (click)="dislikePost(post.id)" style="background-color: transparent; border: none; color: rgb(255,64,129);"><mat-icon style="margin-left:auto;">thumb_down</mat-icon></button>  
+                </div>
+            </mat-card-footer>
             <br>         
         </mat-card>
     </mat-card>
