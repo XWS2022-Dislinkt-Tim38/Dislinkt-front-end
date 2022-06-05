@@ -2,15 +2,18 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserModel } from 'src/app/model/user';
+import { UserProfile } from 'src/app/model/userProfile';
 import { RegistrationService } from 'src/app/service/registration.service';
 
-export class User{
+/*export class User{
   constructor(
     public username: string,
     public email: string,
     public password: string
   ){}
 }
+*/
 
 @Component({
   selector: 'app-registration',
@@ -31,6 +34,13 @@ export class RegistrationComponent implements OnInit {
   phoneNumber: string = '';
   address: string = '';
   confirmPassword: string = '';
+  //dateOfBirth: string = '';
+  //gender: string = '';
+  //biography: string = '';
+
+  //profile = new UserProfile();
+
+  user= new UserModel();
 
   registerForm = new FormGroup({
     firstname:  new FormControl('', [Validators.required, Validators.pattern('^[A-Z][A-za-z ]{1,15}')]),
@@ -67,7 +77,29 @@ export class RegistrationComponent implements OnInit {
           firstName: this.firstname,
           lastName: this.lastname,
           phoneNumber: this.phoneNumber,
-          address: this.address
+          address: this.address,
+          gender: 'male',
+          dateOfBirth: new Date(),
+          profile: {
+            biography: '',
+            skills: ['none'],
+            interests: ['none'],
+            education: [{
+              institutionType: 'none',
+              institutionName: 'none',
+              title: 'none',
+              startDate: new Date(),
+              endDate: new Date()
+            }],
+            experience: [{
+              companyName: 'none',
+              city: 'none',
+              jobTitle: 'none',
+              startDate: new Date(),
+              endDate: new Date()
+            }]
+
+          }
         }
         console.log(registration);
         this.registrationService.addUser(registration).subscribe(response => {

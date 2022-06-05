@@ -16,5 +16,5 @@ export class UserModel{
     sub?: string='';
     gender?: string = '';
     isPublic?: boolean = false;
-    profile?: UserProfile = new UserProfile();
+    profile = new UserProfile();
 }

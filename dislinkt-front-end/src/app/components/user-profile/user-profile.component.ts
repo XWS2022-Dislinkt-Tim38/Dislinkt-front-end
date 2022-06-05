@@ -28,13 +28,16 @@ export class UserProfileComponent implements OnInit {
   dateOfBirth: string = '';
   isPublic: boolean = false;
 
-  biography: string = '';
+  biography?: string = '';
+  skills : string[] = [];
+  interests: string[] =[];
+
+  profile = new UserProfile();
 
   userInfo?: UserTokenModel
   user= new UserModel();
 
-  profile = new UserProfile();
-
+ 
   profileForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName:  new FormControl('', Validators.required),
@@ -58,6 +61,9 @@ export class UserProfileComponent implements OnInit {
       
       this.userService.getUserByUsername(this.userInfo?.sub).subscribe((user: UserModel)  => {
           this.user = user;
+          console.log(user)
+          this.profile = user.profile;
+          console.log(user.profile)
       });
      
   }
@@ -73,9 +79,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   save(): void {
+
+
     this.userService.updateUser(this.user).subscribe((user: UserModel) =>{      
           this.user = user;    
-          
+          console.log(user)
+          console.log(user.profile.biography);
+
     });
   }
 

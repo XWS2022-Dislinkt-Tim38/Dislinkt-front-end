@@ -95,13 +95,18 @@
                         </mat-form-field>
                     
                     </div>
-                <!--    <div fxLayout="column" fxFlex="0 0 47%">
+                    <div fxLayout="column" fxFlex="0 0 47%">
                         <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
                             <mat-label>Biography</mat-label>
-                            <input matInput name="biography" [(ngModel)]="this.user.profile.biography" [ngModelOptions]="{standalone: true}">
+                            <input matInput name="biography" formControlName="biography" [(ngModel)]="this.user.profile.biography">
                         </mat-form-field>
                     </div>
-                -->
+                        <!-- [(ngModel)]="this.user.profile.biography"-->
+
+
+                    
+
+
                 </div>
                
                 
@@ -124,7 +129,7 @@
         <mat-card-content>
             <div fxLayout="column" fxFlex="0 0 47%">
                 <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
-                    <input matInput value="Bla bla">
+                    <input matInput>
                 </mat-form-field>
             </div>
         </mat-card-content>
@@ -140,7 +145,7 @@
            
             <div fxLayout="column" fxFlex="0 0 47%">
                 <mat-form-field class="full-width" appearance="fill" style="margin-top: 20px;">
-                    <input matInput value="Bla bla">
+                    <input matInput>
                 </mat-form-field>
             </div>
         </mat-card-content>
@@ -157,15 +162,15 @@
             <div fxLayout="column" fxFlex="0 0 47%">
                     <mat-form-field appearance="fill" style="margin-top: 20px;">
                         <mat-label>Institution Type</mat-label>
-                        <input matInput value="Bla bla">
+                        <input matInput>
                     </mat-form-field>
                     <mat-form-field appearance="fill" style="margin-top: 20px;">
                         <mat-label>Institution Name</mat-label>
-                        <input matInput value="Bla bla">
+                        <input matInput >
                     </mat-form-field>
                      <mat-form-field appearance="fill" style="margin-top: 20px;">
                         <mat-label>Title</mat-label>
-                        <input matInput value="Bla bla">
+                        <input matInput>
                     </mat-form-field>
                     <mat-form-field appearance="fill" style="margin-top: 20px;">
                         <mat-label>Start Date</mat-label>
@@ -195,15 +200,15 @@
             <div fxLayout="column" fxFlex="0 0 47%">
                 <mat-form-field appearance="fill" style="margin-top: 20px;">
                     <mat-label>Company name</mat-label>
-                    <input matInput value="Bla bla">
+                    <input matInput>
                 </mat-form-field>
                 <mat-form-field appearance="fill" style="margin-top: 20px;">
                     <mat-label>City</mat-label>
-                    <input matInput value="Bla bla">
+                    <input matInput>
                 </mat-form-field>
                 <mat-form-field appearance="fill" style="margin-top: 20px;">
                     <mat-label>Job title</mat-label>
-                    <input matInput value="Bla bla">
+                    <input matInput>
                 </mat-form-field>
                 <mat-form-field appearance="fill" style="margin-top: 20px;">
                     <mat-label>Start Date</mat-label>
