@@ -16,6 +16,7 @@ export class PostsPublicComponent implements OnInit {
   userId: string = this.authService.loggedUser?.idUser
   posts: PostModel[] = []
   following: string[] = []
+  isLiked: boolean = false
 
   constructor(private userService: UserService, private authService: AuthenticationService, private postService: PostService, private datePipe: DatePipe) { }
 
@@ -31,15 +32,19 @@ export class PostsPublicComponent implements OnInit {
         post.datePostedString = this.datePipe.transform(post.datePosted, 'dd/MM/yyyy') || ''
         post.dateEditedString = this.datePipe.transform(post.dateEdited, 'dd/MM/yyyy') || ''
       });
-      this.posts = publicPosts;
-      for (let post of this.posts) {
+      
+      for (let post of publicPosts) {
         if(this.checkFollow(post.ownerId)){
           this.setProfileFollowFlag(post)
+          post.isLiked = true
         }
         else {
           this.setProfileUnfollowFlag(post);
+          post.isLiked = false
         }
       }
+
+      this.posts = publicPosts;
     })
   }
 
@@ -75,6 +80,20 @@ export class PostsPublicComponent implements OnInit {
   
       alert("You follow user " + post.ownerId);
     }
+  }
+
+  likePost(idPost: string) {
+    this.postService.like(idPost, this.userId).subscribe({
+      next: () => {alert("Liked");}
+    })
+  }
+
+  dislikePost(idPost: string) {
+
+    this.postService.dislike(idPost, this.userId).subscribe({
+      next: () => {alert("Disliked");}
+    })
+
   }
 
 }

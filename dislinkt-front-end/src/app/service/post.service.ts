@@ -41,4 +41,12 @@ export class PostService {
         return this.http.post(environment.baseUrlPostService, post)
     }
 
+    public like(postId: string, userId: string): Observable<any>{
+        return this.http.put(environment.baseUrlPostService + "/like/" + postId + "/" + userId, null)
+    }
+
+    public dislike(postId: string, userId: string): Observable<any>{
+        return this.http.put(environment.baseUrlPostService + "/dislike/" + postId + "/" + userId, null)
+    }
+
 }

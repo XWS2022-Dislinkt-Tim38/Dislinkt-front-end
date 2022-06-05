@@ -16,5 +16,6 @@ export class PostModel{
     dateEditedString: string = ""
     
     followFlag?: string;
+    isLiked?: boolean
     
 }

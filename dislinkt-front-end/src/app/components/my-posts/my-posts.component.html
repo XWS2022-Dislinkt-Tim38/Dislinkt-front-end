@@ -8,8 +8,8 @@
             <div mat-card-avatar class=>
                 <img class="post-image" src="{{post.image}}">
             </div>
-            <button (click)="changeViewToEditable(post)" style="margin-left: 70%; background-color: transparent; border: none; height: 20px;"><mat-icon style="margin-left:auto">edit</mat-icon></button>
-            <button (click)="changeViewToRemovable()" style="background-color: transparent; border: none; height: 20px;"><mat-icon style="margin-left:auto;">delete</mat-icon></button>
+            <button (click)="changeViewToEditable(post)" style="margin-left: 70%; background-color: transparent; color: white; border: none; height: 20px;"><mat-icon style="margin-left:auto">edit</mat-icon></button>
+            <button (click)="changeViewToRemovable()" style="background-color: transparent; border: none; color: white; height: 20px;"><mat-icon style="margin-left:auto;">delete</mat-icon></button>
             <mat-card-title style="color: white; margin: 5px;">{{post.username}} </mat-card-title>
             <mat-card-subtitle style="color: white; margin: 5px;"><br>Posted on: {{post.datePostedString}}<br></mat-card-subtitle>
            </mat-card-header>
