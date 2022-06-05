@@ -1,0 +1,25 @@
+<button (click)="redirectToAddPost()" class="mat-stroked-button" style="color: white; background-color: #3f51b5; margin-left: 2%; margin-top: 10px;">Create new post</button>
+<input (keyup)="searchPosts($event)" [(ngModel)]="search" style="margin-left:70%; margin-top: 10px;" type="text" placeholder="Search..."/>
+<div style="margin-left: 5px; margin-right: 5px;">
+    <br>
+    <mat-card *ngFor="let post of posts" > 
+        <mat-card style="width: 900px;">
+           <mat-card-header style="background-color: rgb(255,64,129);">
+            <div mat-card-avatar class=>
+                <img class="post-image" src="{{post.image}}">
+            </div>
+            <button (click)="changeViewToEditable(post)" style="margin-left: 70%; background-color: transparent; border: none; height: 20px;"><mat-icon style="margin-left:auto">edit</mat-icon></button>
+            <button (click)="changeViewToRemovable()" style="background-color: transparent; border: none; height: 20px;"><mat-icon style="margin-left:auto;">delete</mat-icon></button>
+            <mat-card-title style="color: white; margin: 5px;">{{post.username}} </mat-card-title>
+            <mat-card-subtitle style="color: white; margin: 5px;"><br>Posted on: {{post.datePostedString}}<br></mat-card-subtitle>
+           </mat-card-header>
+           <br>
+            <mat-card-subtitle>&#9679; {{post.likes.length}} likes</mat-card-subtitle>
+            <input style="font-weight: bold;" type="text" [(ngModel)] = "post.title" [disabled]='isDisabled'/><br><br>
+            <input type="text" [(ngModel)] = "post.content" [disabled]='isDisabled'/>
+            <button (click)="updatePost(post)" *ngIf="!isDisabled" style="margin-left: 70%; background-color: indigo; color:white" class="mat-stroked-button">Edit</button>
+            <button (click)="deletePost(post.id)" *ngIf="isRemovable" style="margin-left: 70%; background-color: crimson; color:white" class="mat-stroked-button">Delete</button>
+            <br>         
+        </mat-card>
+    </mat-card>
+</div>

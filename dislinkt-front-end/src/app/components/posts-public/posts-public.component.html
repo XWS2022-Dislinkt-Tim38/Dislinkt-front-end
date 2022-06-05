@@ -1,0 +1,24 @@
+<div style="margin-left: 5px; margin-right: 5px;">
+    <br>
+    <mat-card *ngFor="let post of posts">
+        <mat-card style="width: 900px;">
+            <mat-card-header style="background-color: rgb(255,64,129);">
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title style="color: white; margin: 5px;">{{post.username}} </mat-card-title>
+                <mat-card-subtitle style="color: white; margin: 5px;"><br>Posted on: {{post.datePostedString}}<br>
+                </mat-card-subtitle>
+                <button (click)="followProfile(post)" *ngIf="post.ownerId !== userId && userId !== undefined "
+                    style="margin-left: 60%; margin-top:20px; width: 100px; height: 40px; color: white; background-color: #3f51b5;"
+                    class="mat-stroked-button">{{post.followFlag}}</button>
+            </mat-card-header>
+            <br>
+            <mat-card-subtitle>&#9679; {{post.likes.length}} likes</mat-card-subtitle>
+            <mat-card-content>
+                <strong>{{post.title}}</strong>
+                <br><br>
+                {{post.content}}
+            </mat-card-content>
+            <br>
+        </mat-card>
+    </mat-card>
+</div>

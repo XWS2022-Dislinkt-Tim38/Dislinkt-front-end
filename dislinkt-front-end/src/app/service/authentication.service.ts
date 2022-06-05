@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { environment } from 'src/environments/environment';
 import {Router, ActivatedRoute } from "@angular/router";
-import { UserModel } from "../model/user";
+import { UserTokenModel } from "../model/user-token";
 
 
 @Injectable({
@@ -14,7 +14,7 @@ import { UserModel } from "../model/user";
 
 export class AuthenticationService {
 
-    loggedUser: UserModel | null
+    loggedUser: UserTokenModel | null
     private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
     isLoggedIn$ = this._isLoggedIn$.asObservable()
 
@@ -46,11 +46,11 @@ export class AuthenticationService {
         
     }
 
-    private getUser(token: string): UserModel | null {
+    private getUser(token: string): UserTokenModel | null {
       if (!token) {
         return null
       }
-      return JSON.parse(atob(token.split('.')[1])) as UserModel;
+      return JSON.parse(atob(token.split('.')[1])) as UserTokenModel;
     }
 
     public storeToken(accessToken: any) {

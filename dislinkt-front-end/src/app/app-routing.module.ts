@@ -10,6 +10,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HasRoleGuard } from './auth/has-role.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'; 
+import { PostsPublicComponent } from './components/posts-public/posts-public.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 const routes: Routes = [
 
@@ -47,7 +51,29 @@ const routes: Routes = [
       role: 'USER'
     }
   },
-  { path: "passwordless", component: PasswordlessLoginComponent}
+  { 
+    path: "passwordless", 
+    component: PasswordlessLoginComponent
+  },
+  {
+    path: "posts",
+    component: PostsPublicComponent
+  },
+  {
+    path: "feed",
+    canActivate: [LoggedInGuard],
+    component: FeedComponent
+  },
+  {
+    path: "myPosts",
+    canActivate: [LoggedInGuard],
+    component: MyPostsComponent,
+  },
+  {
+    path: "addPost",
+    canActivate: [LoggedInGuard],
+    component: AddPostComponent,
+  }
 
 ];
 

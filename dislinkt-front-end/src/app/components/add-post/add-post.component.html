@@ -1,0 +1,37 @@
+<div class="container">
+    <br><br>
+    <h3 style="text-align: center">CREATE NEW POST</h3>
+    <br>
+    <div style="text-align: center;">
+        <div fxFlex="100%">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Title</mat-label>
+                <input placeholder="Title" [(ngModel)]="post.title" matInput name="title" required/>
+            </mat-form-field>
+        </div>
+        <br>
+        <div fxFlex="100%">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Link</mat-label>
+                <input placeholder="Link" [(ngModel)]="post.link" matInput name="link" required>
+            </mat-form-field>
+        </div>
+        <br>
+        <div fxFlex="100%">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Content</mat-label>
+                <input placeholder="Content" [(ngModel)]="post.content" matInput name="content" required>
+            </mat-form-field>
+        </div>
+        <br>
+
+        <button class="mat-stroked-button" onclick="document.getElementById('inputImage').click()">Upload image</button>
+        <label style="margin-left: 5px" class="mat-card-subtitle">{{imageUrl.substring(12)}}</label>
+        <input type='file' (change)="addImage($event)" [(ngModel)]="imageUrl" id="inputImage" style="display:none"/>
+        <br><br>
+        <br>
+        <button (click)="createPost()" mat-stroked-button style="color: white; background-color: #3f51b5;" type="submit">Create</button>
+        <button (click)="cancel()" mat-stroked-button style="color: white; background-color: crimson; margin-left: 20px;"
+            type="submit">Cancel</button>
+    </div>
+</div>

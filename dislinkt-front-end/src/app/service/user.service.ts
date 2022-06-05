@@ -26,7 +26,17 @@ export class UserService {
     public updateUser(obj:any): Observable<any>{
         return this.http.put(environment.baseUrlUserService, obj);
     }
-	
 
+    public getUser(id: String): Observable<any> {
+        return this.http.get(environment.baseUrlUserService + "/" + id);
+    }
+
+    public unfollowUser(subjectId: string, targetId: string): Observable<any> {
+        return this.http.put(environment.baseUrlUserService + "/unfollow/" + subjectId + "/" + targetId, null);
+    }
+
+    public followUser(subjectId: string, targetId: string): Observable<any> {
+        return this.http.put(environment.baseUrlUserService + "/follow/" + subjectId + "/" + targetId, null);
+    }
 
 }

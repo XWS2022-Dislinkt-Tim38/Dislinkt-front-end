@@ -23,6 +23,11 @@ import { MatCardModule} from '@angular/material/card';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component';
+import { PostsPublicComponent } from './components/posts-public/posts-public.component'
+import { DatePipe } from '@angular/common';
+import { FeedComponent } from './components/feed/feed.component';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
+import { AddPostComponent } from './components/add-post/add-post.component'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
@@ -40,7 +45,11 @@ import { MatTableModule } from "@angular/material/table";
     ForgotPasswordComponent,
     AdminComponent,
     UserProfileComponent,
-    PasswordlessLoginComponent
+    PasswordlessLoginComponent,
+    PostsPublicComponent,
+    FeedComponent,
+    MyPostsComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +72,7 @@ import { MatTableModule } from "@angular/material/table";
     MatSelectModule,
     MatTableModule
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
