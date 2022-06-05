@@ -27,6 +27,8 @@ export class UserProfileComponent implements OnInit {
   phoneNumber: string = '';
   dateOfBirth: string = '';
   isPublic: boolean = false;
+  following: Number[] = [];
+  followers: Number[] = [];
 
   biography: string = '';
 
@@ -56,8 +58,11 @@ export class UserProfileComponent implements OnInit {
         this.userInfo = JSON.parse(atob(this.authService.token.split('.')[1])) as UserTokenModel;
       }
       
-      this.userService.getUserByUsername(this.userInfo?.sub).subscribe((user: UserModel)  => {
-          this.user = user;
+      this.userService.getUserByUsername(this.userInfo?.sub).subscribe((response)  => {
+          console.log(response);
+          this.following = response.following;
+          this.followers = response.followers;
+          this.user = response;
       });
      
   }

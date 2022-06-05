@@ -31,4 +31,12 @@ export class UserService {
         return this.http.get(environment.baseUrlUserService + "/" + id);
     }
 
+    public unfollowUser(subjectId: string, targetId: string): Observable<any> {
+        return this.http.put(environment.baseUrlUserService + "/unfollow/" + subjectId + "/" + targetId, null);
+    }
+
+    public followUser(subjectId: string, targetId: string): Observable<any> {
+        return this.http.put(environment.baseUrlUserService + "/follow/" + subjectId + "/" + targetId, null);
+    }
+
 }

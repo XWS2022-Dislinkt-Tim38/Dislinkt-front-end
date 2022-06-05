@@ -8,6 +8,7 @@
             </div>
             <mat-card-title style="color: white; margin: 5px;">{{post.username}} </mat-card-title>
             <mat-card-subtitle style="color: white; margin: 5px;"><br>Posted on: {{post.datePostedString}}<br></mat-card-subtitle>
+            <button (click)="unfollowProfile(post.ownerId)" style="margin-left: 60%; margin-top:20px; width: 100px; height: 40px; color: white; background-color: #3f51b5;" class="mat-stroked-button">{{follow}}</button>
            </mat-card-header>
            <br>
             <mat-card-subtitle>&#9679; {{post.likes.length}} likes</mat-card-subtitle>

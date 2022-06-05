@@ -15,4 +15,6 @@ export class PostModel{
     datePostedString: string = ""
     dateEditedString: string = ""
     
+    followFlag?: string;
+    
 }
