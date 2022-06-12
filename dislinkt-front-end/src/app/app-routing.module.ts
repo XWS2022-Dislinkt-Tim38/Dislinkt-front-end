@@ -6,7 +6,6 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { HasRoleGuard } from './auth/has-role.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
 import { PasswordlessLoginComponent } from './components/passwordless-login/passwordless-login.component'; 
 import { PostsPublicComponent } from './components/posts-public/posts-public.component';
