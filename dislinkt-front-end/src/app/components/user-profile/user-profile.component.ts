@@ -72,26 +72,6 @@ export class UserProfileComponent implements OnInit {
      
   }
 
-  testUser(): void{
-
-    this.userService.testUser().subscribe(response => {
-      if(response)
-        alert("Successfully reached API as User")     
-    }, error => {
-        alert("You are not authorized to see this page")
-    })
-  }
-
-  testAdmin(): void{
-
-    this.userService.testAdmin().subscribe(response => {
-      if(response)
-        alert("Successfully reached API as Admin")     
-    }, error => {
-        alert("You are not authorized to see this page")
-    })
-  }
-
   save(): void {
 
 
