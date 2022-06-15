@@ -18,7 +18,8 @@ export class ForgotPasswordComponent implements OnInit {
   });
   
   constructor(
-    private forgotPasswordService: ForgotPasswordService
+    private forgotPasswordService: ForgotPasswordService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { 
@@ -31,9 +32,16 @@ export class ForgotPasswordComponent implements OnInit {
       console.log('Works');
       console.log(this.email);
       this.forgotPasswordService.resetPasswordRequest(this.email).subscribe(
-        response => {
-          console.log(response+"super");
-      });
+        {
+          next: () => 
+          {
+            alert("A password recovery e-mail has been sent to this address")
+            this.router.navigate(['/'])
+            
+          }
+        }
+        
+      );
     }
   }
 

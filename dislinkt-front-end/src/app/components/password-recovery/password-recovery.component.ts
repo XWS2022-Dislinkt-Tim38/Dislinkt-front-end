@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ForgotPasswordService } from 'src/app/service/forgot-password.service';
 
 @Component({
@@ -22,35 +22,13 @@ export class PasswordRecoveryComponent implements OnInit {
 
   constructor(
       private forgotPasswordService: ForgotPasswordService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private router: Router
   ) {
     
    }
 
   ngOnInit(): void {   
-
-     /* this.forgotPasswordService.checkIfExpired(this.tokenId).subscribe(response=>
-        {
-          console.log(response);
-           this.isExpired = response;
-           console.log(this.isExpired);
-           if(this.isExpired)
-              alert('Token expired')
-        });
-      */ 
-       /*
-       this.route.queryParams.subscribe(params => {
-          this.tokenId = params['tokenId'];
-          this.forgotPasswordService.checkIfExpired(this.tokenId).subscribe(response => {
-            this.isExpired = response;
-            console.log(this.isExpired)
-            if(!this.isExpired)
-              alert('Token is valid')
-          }, error => {
-            alert('Token Expireed');
-          })
-       });
-        */
   }
 
   public get token(){
@@ -67,13 +45,21 @@ export class PasswordRecoveryComponent implements OnInit {
           tokenId: this.route.snapshot.paramMap.get('id'),
           newPassword: this.newPassword
        }
-      //var passwordRecoveryObj = JSON.stringify(passwordRecovery)
-     // console.log(JSON.stringify(passwordRecovery));
       console.log(passwordRecovery);
       this.forgotPasswordService.changePassword(passwordRecovery).subscribe(
-        response => {
-          console.log(response);
-      });
+        {
+          error: () => 
+          {
+            alert("Token used or expired")
+            this.router.navigate(['/'])
+          },
+          next: () => 
+          {
+            alert("Successfully changed password")
+            this.router.navigate(['/login'])
+          }
+        }
+      );
       
     }else{
       console.log('Failed',this.passwordRecoveryForm.invalid);

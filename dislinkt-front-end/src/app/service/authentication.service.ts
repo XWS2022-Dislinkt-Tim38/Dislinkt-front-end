@@ -31,7 +31,6 @@ export class AuthenticationService {
 
     
    public login(obj: any): Observable<any>{
-        this.router.navigate(['/'])
         return this.http.post(environment.baseUrlAuthService + "/login", obj).pipe(
           tap((response: any) => {
                          
